@@ -1,0 +1,65 @@
+/* 
+div{
+  border: 5px dotted black;
+} */
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mark {
+  fill: #86af49;
+}
+
+svg {
+  display: block;
+  overflow: visible;
+}
+
+svg rect.selection {
+  stroke: none;
+}
+
+#divToPrint{
+  min-height: 297mm;
+  width: 210mm;
+  background-color: #f5f8fa;
+  margin-top: 0;
+}
+
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button.Hover:hover {
+      cursor: "pointer";
+      background-color: "#86af49"
+}
+button:active{
+    background-color: "#86af49"
+
+}
+
