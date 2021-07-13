@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 const currentTimeStamp= new Date().getTime();
-const daysOffSet = 40;
+const daysOffSet = 1;
 const dayMilliseconds = daysOffSet*24*60*60*1000;
 
 export const dateIsBetween= (currentObjectDate, givenDate)=>{
