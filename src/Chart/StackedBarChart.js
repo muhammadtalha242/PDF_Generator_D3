@@ -20,10 +20,10 @@ import {
  * Component that renders a StackedBarChart
  */
 
-const height = 500;
+const height = 600;
 const width = 760;
 const margin = {
-  top: 20,
+  top: 100,
   right: 10,
   left: 50,
   bottom: 20,
@@ -33,7 +33,7 @@ const innerWidth = width - margin.left - margin.right;
 
 function StackedBarChart({ data, date, sensors }) {
 
-  const colorsArr = ['#7CFC00', "#228B22", "#4F7942", "#50C878"]
+  const colorsArr = ['#d53e4f', "#3288bd", "#66c2a5", "#f46d43"]
   const colors = {};
   sensors.forEach((senson, i) => {
 
@@ -146,7 +146,7 @@ function StackedBarChart({ data, date, sensors }) {
       .attr("class", "x label")
       .attr("text-anchor", "end")
       .attr("x", innerWidth / 2)
-      .attr("y", innerHeight + 60)
+      .attr("y", height + 20)
       .text("Date Month");
 
     svg.append("text")
@@ -173,7 +173,35 @@ function StackedBarChart({ data, date, sensors }) {
     const yAxis = axisLeft(yScale);
     svg.select(".y-axis").call(yAxis);
 
-
+    var legend = svg.append('g')
+    .attr('class', 'legend')
+    .attr('transform', 'translate(' + (innerWidth-90) + ', 20)');
+  legend.selectAll('text')
+    .data(sensors)
+    .enter()
+    .append('text')
+    .text(function (d) {
+      return d;
+    })
+    .attr('x', 18)
+    .attr('y', function (d, i) {
+      return i * 18;
+    })
+    .attr('text-anchor', 'start')
+    .attr('alignment-baseline', 'hanging');
+  legend.selectAll('rect')
+    .data(sensors)
+    .enter()
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', function (d, i) {
+      return i * 18;
+    })
+    .attr('width', 12)
+    .attr('height', 12)
+    .attr('fill', function (d, i) {
+      return colors[d];
+    });
 
 
   }, [outputData, data, date, sensors, colors]);
